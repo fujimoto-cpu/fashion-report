@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Trend Report | 2026-04-06</title>
+  <style>
+    :root {
+      --bg: #fdf8f4;
+      --card-bg: #ffffff;
+      --text: #1a1410;
+      --sub: #7a6e67;
+      --jp-color: #d4547a;
+      --kr-color: #7b5ea7;
+      --world-color: #2e7d6e;
+      --border: #ede5dd;
+      --header-grad1: #b8936a;
+      --header-grad2: #e8c49a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      border-top: 4px solid transparent;
+      border-image: linear-gradient(90deg, var(--header-grad1), var(--header-grad2), #e8a0b4) 1;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    .header-eyebrow {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--sub);
+      margin-bottom: 10px;
+    }
+    header h1 {
+      font-size: clamp(26px, 5vw, 40px);
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+    header h1 strong {
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--header-grad1), #d4547a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header-date {
+      font-size: 13px;
+      color: var(--sub);
+      margin-top: 8px;
+      letter-spacing: 2px;
+    }
+
+    /* Summary Banner */
+    .summary {
+      background: linear-gradient(135deg, #2e2520, #4a3728);
+      color: #f5ede4;
+      padding: 24px 32px;
+      text-align: center;
+    }
+    .summary p {
+      font-size: 13px;
+      line-height: 1.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .summary strong { color: #e8c49a; }
+
+    /* Main Layout */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 16px;
+    }
+
+    /* Section Header */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      margin-top: 48px;
+    }
+    .section-header:first-child { margin-top: 0; }
+    .section-flag { font-size: 28px; }
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: box-shadow 0.25s, transform 0.25s;
+      border: 1px solid var(--border);
+    }
+    .card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+
+    .card-inner {
+      display: flex;
+    }
+    .card-accent {
+      width: 4px;
+      flex-shrink: 0;
+    }
+    .jp .card-accent { background: var(--jp-color); }
+    .kr .card-accent { background: var(--kr-color); }
+    .world .card-accent { background: var(--world-color); }
+
+    .card-image {
+      width: 200px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card-body {
+      padding: 24px 28px;
+      flex: 1;
+    }
+
+    .card-region {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .jp .card-region { color: var(--jp-color); }
+    .kr .card-region { color: var(--kr-color); }
+    .world .card-region { color: var(--world-color); }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .card-summary {
+      font-size: 14px;
+      color: var(--sub);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .card-desc {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.9;
+      padding: 14px 16px;
+      background: #f9f5f1;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .jp .card-link { color: var(--jp-color); border: 1.5px solid var(--jp-color); }
+    .kr .card-link { color: var(--kr-color); border: 1.5px solid var(--kr-color); }
+    .world .card-link { color: var(--world-color); border: 1.5px solid var(--world-color); }
+    .jp .card-link:hover { background: var(--jp-color); color: #fff; }
+    .kr .card-link:hover { background: var(--kr-color); color: #fff; }
+    .world .card-link:hover { background: var(--world-color); color: #fff; }
+
+    /* Insight Section */
+    .insight {
+      background: linear-gradient(135deg, #2e2520, #3d2e26);
+      color: #f5ede4;
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-top: 56px;
+    }
+    .insight-header {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #e8c49a;
+      margin-bottom: 6px;
+    }
+    .insight h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+    .insight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .insight-item {
+      background: rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 16px 20px;
+      border-left: 3px solid #e8c49a;
+    }
+    .insight-item p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #e8ddd6;
+    }
+
+    /* Backnumber */
+    .backnumber {
+      margin-top: 48px;
+      padding: 28px 32px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    .backnumber h3 {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--sub);
+      margin-bottom: 16px;
+    }
+    .backnumber-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .backnumber-list a {
+      font-size: 12px;
+      color: var(--sub);
+      text-decoration: none;
+      padding: 4px 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: all 0.2s;
+    }
+    .backnumber-list a:hover { border-color: var(--jp-color); color: var(--jp-color); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 11px;
+      color: var(--sub);
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 640px) {
+      .card-inner { flex-direction: column; }
+      .card-image { width: 100%; height: 180px; }
+      .insight-grid { grid-template-columns: 1fr; }
+      .card-body { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-eyebrow">Daily Fashion Intelligence</div>
+  <h1><strong>Fashion</strong> Trend Report</h1>
+  <div class="header-date">🇯🇵 Japan &nbsp;|&nbsp; 🇰🇷 Korea &nbsp;|&nbsp; 🌍 World &nbsp;&nbsp;—&nbsp;&nbsp; 2026.04.06</div>
+</header>
+
+<div class="summary">
+  <p>
+    <strong>Today's Highlights:</strong>
+    ジュン アシダが「Between the Lines」秋冬コレクションを代官山で発表 ／
+    東京コレクション秋冬2026-27に30ブランド集結、Z世代デザイナーが台頭 ／
+    ソウルFWが実験性とウェアラビリティの融合へシフト ／
+    上海FWが世界4位に浮上しNYを抜く
+  </p>
+</div>
+
+<main>
+
+  <!-- Japan Section -->
+  <div class="section-header">
+    <span class="section-flag">🇯🇵</span>
+    <span class="section-title" style="color: var(--jp-color);">Japan Fashion</span>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- JP1 -->
+  <div class="card jp">
+    <div class="card-inner">
+      <div class="card-accent"></div>
+      <div class="card-image">
+        <img src="https://www.fashion-press.net/img/news/145109/top.jpg" alt="Jun Ashida" onerror="this.src='https://placehold.co/200x240/fdf8f4/b8936a?text=Fashion'">
+      </div>
+      <div class="card-body">
+        <div class="card-region">Japan · Collection</div>
+        <div class="card-title">ジュン アシダ 秋冬2026-27「Between the Lines」── 伝統とモダンの"間"に潜む洗練</div>
+        <div class="card-summary">2026年4月3日、代官山ブティックで発表。テーマは「線と線のあいだ」。</div>
+        <div class="card-desc">
+          芦田多恵のクリエイティブディレクションのもと、ピンストライプにスパンコールを施した繊維表現、リバーシブルレース、3Dジャカードといった職人技を融合。黒・バーガンディ・ネイビーの深い秋色に、フローラルモチーフとオパール柄が重なる幻想的な世界観。フィナーレはメタリックラメとシークイン細部で「星の塵」を表現し、伝統的なテーラリングを次世代へと昇華させた。
+        </div>
+        <a class="card-link" href="https://www.fashion-press.net/news/145109" target="_blank">🔗 記事を読む</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JP2 -->
+  <div class="card jp">
+    <div class="card-inner">
+      <div class="card-accent"></div>
+      <div class="card-image">
+        <img src="https://media.wwdjapan.com/wp-content/uploads/2026/04/01122046/tokushu-otodoke-1080-1080-15.jpg" alt="Tokyo Collection" onerror="this.src='https://placehold.co/200x240/fdf8f4/b8936a?text=Fashion'">
+      </div>
+      <div class="card-body">
+        <div class="card-region">Japan · Runway</div>
+        <div class="card-title">東京コレクション秋冬2026-27 ── 30ブランド集結、Z世代デザイナーが台頭</div>
+        <div class="card-summary">アランポール、ズッ、エンフォルドほか、日本を代表するブランドが一堂に会する。</div>
+        <div class="card-desc">
+          今季の東コレには30ブランドが参加し、ヘア＆メイクトレンドも含めて包括的なシーズンを構成。注目は文化服装学院を今春卒業したばかりの新人デザイナー「デッドボーイ」（西脇駆）。Z世代の感性で既存のカテゴリを横断した独自の世界観を提示し、業界関係者の間で大きな話題を呼んでいる。日本発の次世代クリエイターが世界に向けて発信する動きが加速中。
+        </div>
+        <a class="card-link" href="https://www.wwdjapan.com/articles/2368347" target="_blank">🔗 記事を読む</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Korea Section -->
+  <div class="section-header">
+    <span class="section-flag">🇰🇷</span>
+    <span class="section-title" style="color: var(--kr-color);">Korea Fashion</span>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- KR1 -->
+  <div class="card kr">
+    <div class="card-inner">
+      <div class="card-accent"></div>
+      <div class="card-image">
+        <img src="https://wimg.heraldcorp.com/news/cms/2026/02/05/news-p.v1.20260204.87a63ff117f945fca56531e51610a214_T1.jpg" alt="Seoul Fashion Week" onerror="this.src='https://placehold.co/200x240/f8f4fd/7b5ea7?text=K-Fashion'">
+      </div>
+      <div class="card-body">
+        <div class="card-region">Korea · Seoul Fashion Week</div>
+        <div class="card-title">ソウルFW秋冬2026 ── 実験性とウェアラビリティの融合が新潮流</div>
+        <div class="card-summary">Munn、MMAMら気鋭ブランドがDDPで発表。地元消費者へのリーチを強化。</div>
+        <div class="card-desc">
+          ハン・ヒョンミンのMunnはリサイクル素材を用いたミリタリー再解釈シルエットを披露。パク・ヒョンのMMAMは「Emerging Layers」として、パジャマ素材とテーラードを組み合わせた日常使いできるピースを提案。「国際市場向けだった前シーズンから、地元顧客が実際に着られるものへ」というシフトが、ソウルコレクション全体に共通するキーワードとなった。
+        </div>
+        <a class="card-link" href="https://www.koreaherald.com/article/10670387" target="_blank">🔗 記事を読む</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- KR2 -->
+  <div class="card kr">
+    <div class="card-inner">
+      <div class="card-accent"></div>
+      <div class="card-image">
+        <img src="https://placehold.co/200x240/f8f4fd/7b5ea7?text=K-Fashion" alt="K-Fashion Y2K">
+      </div>
+      <div class="card-body">
+        <div class="card-region">Korea · Street Trend</div>
+        <div class="card-title">Y2K × 韓国ストリート春2026 ── モノトーン白黒コーデ＋立体フラワーが席巻</div>
+        <div class="card-summary">2026年春、韓国ストリートで白黒系Y2Kスタイルが圧倒的人気に。</div>
+        <div class="card-desc">
+          韓国ストリートではY2Kリバイバルの波が継続中。特に白×黒のモノトーンコーデに、立体的なフラワーモチーフをアクセントとして加えるスタイルが急上昇。バッグは「横長シルエット＋大きめキーホルダー」のスタイルが人気をキープ。これらのトレンドはSNSを介して日本にも波及しており、Kファッションが日本のZ世代に与える影響は増大している。
+        </div>
+        <a class="card-link" href="https://shopnikoniko.jp/apps/note/topics1015/" target="_blank">🔗 記事を読む</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- World Section -->
+  <div class="section-header">
+    <span class="section-flag">🌍</span>
+    <span class="section-title" style="color: var(--world-color);">World Fashion</span>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- World1 -->
+  <div class="card world">
+    <div class="card-inner">
+      <div class="card-accent"></div>
+      <div class="card-image">
+        <img src="https://placehold.co/200x240/f4fdf9/2e7d6e?text=Shanghai+FW" alt="Shanghai Fashion Week">
+      </div>
+      <div class="card-body">
+        <div class="card-region">World · Industry News</div>
+        <div class="card-title">上海ファッションウィーク2026、世界4位に浮上 ── ニューヨークを抜き「新しい中心地」へ</div>
+        <div class="card-summary">最新バイタリティ指数でNYを超え急成長。グローバルブランドが続々と回帰。</div>
+        <div class="card-desc">
+          新華シルクロードが発表した最新ファッションシティバイタリティ指数で、上海ファッションウィークが世界4位にランクイン、ニューヨークを超える成長率を記録した。LVMHやケリングをはじめとする欧州大手もアジアへのリソース再配分を加速。中国のラグジュアリー消費が復調する中、上海が「ファッション産業の新しいグローバル中心地」として台頭しつつある。
+        </div>
+        <a class="card-link" href="https://www.manilatimes.net/2026/04/03/tmt-newswire/pr-newswire/xinhua-silk-road-shanghai-fashion-week-ranks-4th-in-latest-vitality-index-report/2314028" target="_blank">🔗 記事を読む</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- World2 -->
+  <div class="card world">
+    <div class="card-inner">
+      <div class="card-accent"></div>
+      <div class="card-image">
+        <img src="https://placehold.co/200x240/f4fdf9/2e7d6e?text=DRIIVIIN" alt="DRIIVIIN">
+      </div>
+      <div class="card-body">
+        <div class="card-region">World · New Brand</div>
+        <div class="card-title">DRIIVIIN「I WAS HERE」── NYFWで「Cultural Luxury（文化的ラグジュアリー）」を提唱</div>
+        <div class="card-summary">ソニーホールでのSS2026デビューがグローバルな議論を巻き起こす。</div>
+        <div class="card-desc">
+          NYベースの新興ブランドDRIIVIINがニューヨーク・ソニーホールでSS2026コレクション「I WAS HERE」を発表。「Cultural Luxury（文化的ラグジュアリー）」という新概念を提唱し、服を自己アイデンティティと文化的背景の表現として再定義した。価格による差別化ではなく、文化的価値と物語を価値の源泉とするアプローチは、ラグジュアリー業界の「戦略リセット」議論とも共鳴し注目を集めている。
+        </div>
+        <a class="card-link" href="https://www.manilatimes.net/2026/04/04/tmt-newswire/globenewswire/a-new-york-fashion-week-moment-is-turning-the-rising-brand-driiviin-into-a-global-conversation/2314140" target="_blank">🔗 記事を読む</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insight Section -->
+  <div class="insight">
+    <div class="insight-header">KONNEKT INTERNATIONAL</div>
+    <h2>💡 ゆりこ × KONNEKTへの示唆</h2>
+    <div class="insight-grid">
+      <div class="insight-item">
+        <p>🌸 <strong>ジュン アシダのメタリック×伝統</strong><br>
+        Armillary. のブランドビジュアルに「技と輝き」の軸を加えるヒント。ラメやスパンコールの繊細使いは写真・動画コンテンツでも映える要素として活用できそう。</p>
+      </div>
+      <div class="insight-item">
+        <p>🇰🇷 <strong>ソウルFWの「ウェアラビリティ回帰」</strong><br>
+        高感度×日常使いの両立は、KONNEKTブランドのコマース展開においても重要な軸。GOD ONLY KNOWSなどのスタイリング提案で日常への落とし込みを意識したい。</p>
+      </div>
+      <div class="insight-item">
+        <p>🌍 <strong>上海FWの台頭 ＝ アジア戦略の好機</strong><br>
+        KONNEKTのアジア向けブランド発信を強化するタイミング。上海を含むアジア圏インフルエンサーとのコラボや越境EC展開は検討の価値あり。</p>
+      </div>
+      <div class="insight-item">
+        <p>✨ <strong>Cultural Luxuryという新概念</strong><br>
+        DRIIVIINの「文化的ラグジュアリー」は KONNEKT のタレントブランドと親和性が高い。アーティストの物語・世界観を価値の核に置くコミュニケーション戦略に応用できる。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backnumber -->
+  <div class="backnumber">
+    <h3>📂 Back Numbers</h3>
+    <div class="backnumber-list">
+      <span style="font-size:12px; color: var(--sub);">バックナンバーは次回以降に表示されます</span>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Fashion Trend Report · KONNEKT INTERNATIONAL · 2026.04.06
+</footer>
+
+</body>
+</html>
