@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Trend Report – 2026-06-26</title>
+<meta name="description" content="KONNEKT INTERNATIONAL 毎日ファッショントレンドレポート：日本・韓国・世界の最新ニュースを企画・デザイン視点で解説。">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #fdf8f4;
+    color: #1a1410;
+    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HEADER ── */
+  header {
+    background: #fff;
+    border-top: 4px solid transparent;
+    border-image: linear-gradient(to right, #b8936a, #e8c49a, #e8a0b4) 1;
+    padding: 32px 24px 24px;
+    text-align: center;
+  }
+  header .brand {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #b8936a;
+    margin-bottom: 8px;
+  }
+  header h1 {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  header .meta {
+    font-size: 13px;
+    color: #7a6e67;
+  }
+  header .flags { font-size: 22px; margin-top: 10px; letter-spacing: 6px; }
+
+  /* ── SUMMARY BANNER ── */
+  .summary-banner {
+    background: #1a1410;
+    color: #fff;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .summary-banner h2 {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e8c49a;
+    margin-bottom: 16px;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .summary-item {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(232,196,154,0.25);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    text-align: left;
+  }
+  .summary-item .tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #e8a0b4;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ── SECTIONS ── */
+  .section { padding: 40px 16px; max-width: 900px; margin: 0 auto; }
+  .section-title {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a6e67;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8e0d8;
+  }
+
+  /* ── ARTICLE CARD ── */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    display: flex;
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+    border-left: 4px solid #d4547a;
+  }
+  .card:hover {
+    box-shadow: 0 8px 32px rgba(26,20,16,0.12);
+    transform: translateY(-2px);
+  }
+  .card.korea { border-left-color: #7b5ea7; }
+  .card.global { border-left-color: #2e7d6e; }
+
+  .card-thumb {
+    width: 160px;
+    min-width: 160px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-body { padding: 20px 22px; flex: 1; min-width: 0; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background: #fdf0e8;
+    color: #b8936a;
+  }
+  .card.korea .badge { background: #f3eff8; color: #7b5ea7; }
+  .card.global .badge { background: #edf5f4; color: #2e7d6e; }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .card-summary {
+    font-size: 13px;
+    color: #7a6e67;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .card-detail {
+    background: #fdf8f4;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 13px;
+    line-height: 1.75;
+    margin-bottom: 14px;
+    color: #3a322c;
+  }
+  .card.korea .card-detail { background: #f8f4fc; }
+  .card.global .card-detail { background: #f2f8f6; }
+
+  .read-btn {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 7px 16px;
+    border-radius: 6px;
+    background: #1a1410;
+    color: #fff;
+    transition: background 0.2s;
+  }
+  .read-btn:hover { background: #b8936a; }
+
+  /* ── INSIGHTS ── */
+  .insights {
+    background: #1a1410;
+    color: #fff;
+    padding: 40px 16px;
+  }
+  .insights-inner { max-width: 900px; margin: 0 auto; }
+  .insights h2 {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e8c49a;
+    margin-bottom: 24px;
+  }
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .insight-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(232,196,154,0.2);
+    border-radius: 10px;
+    padding: 18px 16px;
+  }
+  .insight-card .num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e8c49a;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .insight-card p { font-size: 13px; color: #d0c8c0; line-height: 1.65; }
+  .insight-card strong { color: #fff; }
+
+  /* ── BACKNUMBERS ── */
+  .backnumbers { padding: 32px 16px 48px; max-width: 900px; margin: 0 auto; }
+  .backnumbers h2 {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7a6e67;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e8e0d8;
+    padding-bottom: 8px;
+  }
+  .backnumbers p { font-size: 13px; color: #7a6e67; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a1410;
+    color: #7a6e67;
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .card { flex-direction: column; }
+    .card-thumb { width: 100%; min-width: 0; height: 180px; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">KONNEKT INTERNATIONAL</div>
+  <h1>Fashion Trend Report</h1>
+  <div class="meta">2026年6月26日（金）</div>
+  <div class="flags">🇯🇵 🇰🇷 🌍</div>
+</header>
+
+<!-- SUMMARY BANNER -->
+<div class="summary-banner">
+  <h2>Today's Highlights</h2>
+  <div class="summary-grid">
+    <div class="summary-item">
+      <span class="tag">🇯🇵 Japan</span>
+      tiit tokyo がAW26コレクションを原宿で発表。「構造美と余白」が東京発の新フィロソフィーに。
+    </div>
+    <div class="summary-item">
+      <span class="tag">🇯🇵 Japan</span>
+      グローバルFC 2026SSで世界14新鋭ブランドが台頭。日本発「ブティック・ジューン」も参加。
+    </div>
+    <div class="summary-item">
+      <span class="tag">🇰🇷 Korea</span>
+      ソウルFW25周年。20か国100バイヤーが集結し、K-ファッションのグローバル地位が加速。
+    </div>
+    <div class="summary-item">
+      <span class="tag">🌍 Global</span>
+      「ウェアラブルラグジュアリー」がFarfetch指数で首位。価格より価値・実用性へのシフト鮮明。
+    </div>
+  </div>
+</div>
+
+<!-- JAPAN SECTION -->
+<div class="section">
+  <div class="section-title">🇯🇵 Japan Fashion</div>
+
+  <!-- Card 1 -->
+  <div class="card">
+    <div class="card-thumb">
+      <img src="https://placehold.co/200x240/fdf8f4/b8936a?text=tiit+tokyo" alt="tiit tokyo AW26">
+    </div>
+    <div class="card-body">
+      <span class="badge">コレクション</span>
+      <h2 class="card-title">tiit tokyo 2026AW：原宿で「詩的な構築美」を発表</h2>
+      <p class="card-summary">岩田翔・滝澤裕史が手掛ける東京発ブランドが、ウィズ原宿ホールで秋冬コレクションを披露。繊細なテーラリングとアバンギャルドな素材使いが融合した。</p>
+      <div class="card-detail">
+        <strong>なぜ注目？</strong> tiit tokyoはここ数シーズンで急速に国際的評価を得ている東京インディーズシーンの中核ブランド。今回のAW26は「服が持つ内的構造を外部に露出させる」というコンセプトを軸に、接着芯を敢えて表地として使うリバーシブル構造や、ドレープを幾何学的に固定したシルエットが特徴。日本的な「間（ま）」の感覚をウェスタンなテーラリング文法で表現しており、国内外バイヤーの関心を引いている。KONNEKT視点では、このような「ローカルフィロソフィー×インターナショナルな技術言語」の組み合わせは、Armillary. のブランドビルディングにそのまま応用できるフレームワークだ。
+      </div>
+      <a class="read-btn" href="https://www.fashionsnap.com/collection/tiit-tokyo/2026aw/" target="_blank">🔗 記事を読む</a>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <div class="card-thumb">
+      <img src="https://placehold.co/200x240/fdf8f4/b8936a?text=Global+FC" alt="Global Fashion Collective 2026SS">
+    </div>
+    <div class="card-body">
+      <span class="badge">ブランド</span>
+      <h2 class="card-title">世界6都市で躍動：グローバルFC 2026SSの新鋭14ブランド</h2>
+      <p class="card-summary">「グローバル・ファッション・コレクティブ（GFC）」が2026SSで世界14の新興ブランドを一堂に集約。日本発「ブティック・ジューン」が参加し国際舞台へ進出した。</p>
+      <div class="card-detail">
+        <strong>なぜ注目？</strong> GFCはニューヨーク・ロンドン・ミラノ・パリ・上海・東京で同時展開する新世代のコレクティブ型発信プラットフォーム。従来のスケジュール外にショーを打てる仕組みが「インディーズブランドの国際デビュー」を容易にしている。日本からの参加ブランドが増加しているのは、東京コレクションの国際的な訴求力が向上している証左。KONNEKTが扱うブランドにとって、こうしたプラットフォームへの参画は、単独での国際プレスイベントに比べコスト効率の高いグローバル露出手段として検討に値する。デジタルルックブックとの組み合わせで効果が倍増する。
+      </div>
+      <a class="read-btn" href="https://www.fashionsnap.com/article/gfc-2026-ss/" target="_blank">🔗 記事を読む</a>
+    </div>
+  </div>
+</div>
+
+<!-- KOREA SECTION -->
+<div class="section">
+  <div class="section-title">🇰🇷 Korea Fashion</div>
+
+  <!-- Card 3 -->
+  <div class="card korea">
+    <div class="card-thumb">
+      <img src="https://placehold.co/200x240/f3eff8/7b5ea7?text=Seoul+FW+25th" alt="Seoul Fashion Week 25th">
+    </div>
+    <div class="card-body">
+      <span class="badge">コレクション</span>
+      <h2 class="card-title">ソウルFW25周年：24ブランド・20か国バイヤーでグローバル舞台へ</h2>
+      <p class="card-summary">25周年を迎えた2026S/Sソウルファッションウィークは、DDPで24ブランド・15ランウェイを展開。Harvey Nichols、Urban Outfittersなど20か国100名のバイヤーが参集した。</p>
+      <div class="card-detail">
+        <strong>なぜ注目？</strong> 創設25周年という節目に、ソウルFWは単なる国内イベントを超えた「グローバルバイイングステージ」として確立された。参加バイヤーの顔ぶれ（プランタン、クラブ21シンガポール等）はソウル発ブランドの取り扱い先が欧州・東南アジアへ着実に広がっていることを示している。K-POPアイドルによるスタイリングが「トレンド予測システム」として機能し始めており、従来のファッションウィークよりも速いサイクルでリテールに影響を与える新モデルが定着しつつある。KONNEKTとして韓国ブランドとのコラボレーション企画や合同展示会を検討するなら今が絶好の機会だ。
+      </div>
+      <a class="read-btn" href="https://japanese.seoul.go.kr/25%E5%91%A8%E5%B9%B4%E3%82%92%E8%BF%8E%E3%81%88%E3%81%9F2026s-s%E3%82%BD%E3%82%A6%E3%83%AB%E3%83%95%E3%82%A1%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%82%A6%E3%82%A3%E3%83%BC%E3%82%AF%E3%80%81%E3%80%8C/" target="_blank">🔗 記事を読む</a>
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card korea">
+    <div class="card-thumb">
+      <img src="https://placehold.co/200x240/f3eff8/7b5ea7?text=SFW+FW26" alt="Seoul FW FW26">
+    </div>
+    <div class="card-body">
+      <span class="badge">コレクション</span>
+      <h2 class="card-title">ソウルFW FW26：実験性と着やすさの融合がK-ファッションを再定義</h2>
+      <p class="card-summary">FW26ソウルFWの定義的テーマは「リインタープリテーション」。実験的なK-ファッションと商業的に成立するシルエットの両立が、新世代デザイナーの共通言語になっている。</p>
+      <div class="card-detail">
+        <strong>なぜ注目？</strong> Ader ErrorやAndersson Bellなど、インターナショナルな引き合いが強いソウル発ブランドに共通しているのは、「実験 vs 着やすさ」の緊張関係を商品の中で解消していること。BLACKPINK・BTS等のアイドルが着用することでSNSバイラルが起き、それが即座にリテール売上に直結するKPOP起点のトレンド波及モデルは、世界のどのファッション都市も再現できていない独自の強みだ。GOD ONLY KNOWS のような感度の高い日本ブランドの企画において、このK-ファッションの「文化×商業」設計術は直接的な参照モデルになり得る。コレクションの世界観とキャンペーンビジュアルの同期設計が鍵。
+      </div>
+      <a class="read-btn" href="https://www.arahkaii.com/fashion/seoul-fashion-week-fw-2026/" target="_blank">🔗 記事を読む</a>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL SECTION -->
+<div class="section">
+  <div class="section-title">🌍 World Fashion</div>
+
+  <!-- Card 5 -->
+  <div class="card global">
+    <div class="card-thumb">
+      <img src="https://placehold.co/200x240/edf5f4/2e7d6e?text=Luxury+2026" alt="Luxury Fashion 2026">
+    </div>
+    <div class="card-body">
+      <span class="badge">業界ニュース</span>
+      <h2 class="card-title">ラグジュアリー業界2026年の5キートレンド：価格から価値へ</h2>
+      <p class="card-summary">2025年の世界ラグジュアリー市場は1.5兆ドルで3%成長。2026年は価格引き上げではなく「ブランドが稼ぐ力」が問われる転換点となり、サステナビリティが戦略的必須要件に。</p>
+      <div class="card-detail">
+        <strong>なぜ注目？</strong> 過去3年間、ラグジュアリー市場の成長の80%は「値上げ」によるものだった。しかし2026年には消費者がその限界に達しつつあり、ブランドは本質的な価値提案で成長を証明しなくてはならない転換期に入った。注目すべきはサステナビリティの変化：単なるCSRから「修理・再販プログラム」「プレオウンドライン」という収益化手段へと進化している点（68.3%が修理サービスを提供）。プラダによるヴェルサーチ買収（12.5億ユーロ）はラグジュアリーコングロマリットの再編を象徴する動きで、独立インディーズブランドのポジショニング戦略にも影響を与える。KONNEKTとしては「価値ベースのコミュニケーション」強化が急務。
+      </div>
+      <a class="read-btn" href="https://fashionunited.com/news/business/5-key-trends-shaping-luxury-fashion-sector-in-2026/2026031871262" target="_blank">🔗 記事を読む</a>
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card global">
+    <div class="card-thumb">
+      <img src="https://placehold.co/200x240/edf5f4/2e7d6e?text=Wearable+Luxury" alt="Wearable Luxury">
+    </div>
+    <div class="card-body">
+      <span class="badge">業界ニュース</span>
+      <h2 class="card-title">Farfetch Index：「ウェアラブルラグジュアリー」が2026消費を席巻</h2>
+      <p class="card-summary">Farfetchの2026年トレンド指数で「ウェアラブルラグジュアリー」が首位。文化的威信と日常的実用性を両立するアイテムへの需要が急増し、68%のブランドが修理・再販サービスを導入。</p>
+      <div class="card-detail">
+        <strong>なぜ注目？</strong> 「ウェアラブルラグジュアリー」は「高価格品を普段使いできるか」という消費者視点の変化を反映したキーワード。特に注目されるのは、ラグジュアリーブランドが修理・プレオウンド・トレードインを「価値訴求のツール」として使い始めている点だ。Hermèsが40.5%という業界最高の営業利益率を維持しているのも、修繕可能な品質というブランドナラティブへの長期投資の成果といえる。この潮流はミドルレンジブランドにとっても重要な示唆を持つ：「長く使えるものを作っている」というストーリーは2026年の購買動機を強力に後押しする。AIによるパーソナルスタイリングツールとの組み合わせで需要予測精度も上がっている。
+      </div>
+      <a class="read-btn" href="https://fashionunited.uk/news/fashion/wearable-luxury-dominates-farfetch-index-on-2026-fashion-trends/2026040187218" target="_blank">🔗 記事を読む</a>
+    </div>
+  </div>
+</div>
+
+<!-- INSIGHTS -->
+<div class="insights">
+  <div class="insights-inner">
+    <h2>💡 KONNEKT × ゆりこへの示唆</h2>
+    <div class="insights-grid">
+      <div class="insight-card">
+        <div class="num">01</div>
+        <p><strong>Armillary. コレクション設計</strong><br>tiit tokyoのAW26が示す「構造を外部化する設計」＝素材・接着・縫製の工程をビジュアルに昇華する手法はArmillary.の世界観と親和性が高い。次回コレクションで「見えない技術を見せる」ルックを1〜2点試験的に投入するとメディア露出が高まりやすい。</p>
+      </div>
+      <div class="insight-card">
+        <div class="num">02</div>
+        <p><strong>GOD ONLY KNOWS 企画</strong><br>K-ファッションの「マルチユース」概念（1着複数シーン対応）はGOD ONLY KNOWSのスタイリング提案に即活用できる。キャンペーンビジュアルを「3シーン着まわし」フォーマットで構成すると、韓国・日本双方のSNSで高いエンゲージメントが期待できる。</p>
+      </div>
+      <div class="insight-card">
+        <div class="num">03</div>
+        <p><strong>ソウルFWへの戦略的参入</strong><br>25周年でHarvey Nichols・Printempなど欧米バイヤーが集結するソウルFWへの出展は、KONNEKT取り扱いブランドの欧州進出における費用対効果が高い登竜門になりうる。2027SSに向け今秋の応募タイミングを要確認。</p>
+      </div>
+      <div class="insight-card">
+        <div class="num">04</div>
+        <p><strong>AI×サステナブル活用</strong><br>ラグジュアリーの68%が修理・再販サービスを提供するトレンドは、インディーズブランドでも「修理受付」をブランドストーリーに組み込む好機。AIスタイリングアシスタントとのページ統合で「長く使えるワードローブ提案」コンテンツを量産しつつブランド差別化を実現できる。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BACKNUMBERS -->
+<div class="backnumbers">
+  <h2>📂 バックナンバー</h2>
+  <p>本日が初回レポート、または過去のレポートページが確認できませんでした。次回以降、バックナンバーがここに表示されます。</p>
+</div>
+
+<footer>
+  © 2026 KONNEKT INTERNATIONAL — Fashion Trend Report. Generated by AI Research Agent.
+</footer>
+
+</body>
+</html>
